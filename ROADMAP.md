@@ -47,6 +47,7 @@
 - [ ] **Hybrid Starter Motor:** Implement a small electric starter to overcome turbine stiction and achieve immediate RPM during the "Cold Start" phase (Addresses Pivot 4).
 
 ## 📦 Batch 3: The "Tunnel" (Axial Integration)
-* **Status:** 🔴 Locked
+* **Status:** 🟡 In Progress
 - [ ] **Chassis Integration:** Finalizing the "Axial Condensing Tunnel" assembly.
+    - [x] **Thermal Firewall:** Validated "Active Gearbox Cooling" (fins + airflow) reduces heat creep by 98%.
 - [ ] **Full Load Test:** 350W+ TDP stabilization.

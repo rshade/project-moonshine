@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict
+import yaml
+from pathlib import Path
 
 @dataclass
 class Feedstock:
@@ -10,56 +12,39 @@ class Feedstock:
     typical_yield_l_per_hectare: float
     water_scarcity_index: float      # 1.0 = baseline, >1.0 = high stress region
 
-# Source Data (Estimated/Average values for simulation)
-# References: GREET model, various LCA studies.
-FEEDSTOCKS = {
-    "CORN": Feedstock(
-        name="Corn (Maize)",
-        water_intensity_l_per_l=10.0, 
-        carbon_intensity_kg_per_l=1.2, 
-        avg_price_usd_per_l=0.50,
-        typical_yield_l_per_hectare=3800,
-        water_scarcity_index=1.2 # US Midwest/General
-    ),
-    "SUGAR_BEET": Feedstock(
-        name="Sugar Beet",
-        water_intensity_l_per_l=5.0,
-        carbon_intensity_kg_per_l=0.9,
-        avg_price_usd_per_l=0.65,
-        typical_yield_l_per_hectare=6000,
-        water_scarcity_index=1.5 # often grown in areas needing irrigation
-    ),
-    "SUGARCANE": Feedstock(
-        name="Sugarcane",
-        water_intensity_l_per_l=4.0,
-        carbon_intensity_kg_per_l=0.5,
-        avg_price_usd_per_l=0.45,
-        typical_yield_l_per_hectare=7000,
-        water_scarcity_index=2.0 # High stress in some tropical regions
-    ),
-    "POTATO": Feedstock(
-        name="Potato",
-        water_intensity_l_per_l=12.0,
-        carbon_intensity_kg_per_l=1.5,
-        avg_price_usd_per_l=0.80,
-        typical_yield_l_per_hectare=2500,
-        water_scarcity_index=1.1
-    ),
-    "CELLULOSIC": Feedstock(
-        name="Cellulosic (Waste/Switchgrass)",
-        water_intensity_l_per_l=2.0,
-        carbon_intensity_kg_per_l=0.2,
-        avg_price_usd_per_l=1.20,
-        typical_yield_l_per_hectare=2000,
-        water_scarcity_index=1.0 # Baseline
+def load_data():
+    # Resolve path to data/feedstocks.yaml
+    # This file is in moonshine-sim/moonshine/impact.py
+    # We need to go up two levels to root, then into data/
+    current_dir = Path(__file__).parent
+    project_root = current_dir.parent.parent
+    yaml_path = project_root / "data" / "feedstocks.yaml"
+    
+    with open(yaml_path, "r") as f:
+        data = yaml.safe_load(f)
+    return data
+
+_YAML_DATA = load_data()
+
+# Load Feedstocks from YAML
+FEEDSTOCKS = {}
+for key, val in _YAML_DATA["feedstocks"].items():
+    FEEDSTOCKS[key] = Feedstock(
+        name=val["name"],
+        water_intensity_l_per_l=val["water_intensity_l_per_l"],
+        carbon_intensity_kg_per_l=val["carbon_intensity_kg_per_l"],
+        avg_price_usd_per_l=val["avg_price_usd_per_l"],
+        typical_yield_l_per_hectare=val["typical_yield_l_per_hectare"],
+        water_scarcity_index=val["water_scarcity_index"]
     )
-}
 
 class Logistics:
-    # kg CO2 per Liter per km
-    EMISSIONS_TRUCK = 0.0001  
-    EMISSIONS_RAIL = 0.00003
-    EMISSIONS_SHIP = 0.00001
+    # Load Logistics from YAML
+    _EMISSIONS = _YAML_DATA["logistics"]["emissions_per_kg_km"]
+    
+    EMISSIONS_TRUCK = _EMISSIONS["TRUCK"]
+    EMISSIONS_RAIL = _EMISSIONS["RAIL"]
+    EMISSIONS_SHIP = _EMISSIONS["SHIP"]
 
     @staticmethod
     def calculate_transport_impact(volume_l: float, distance_km: float, mode: str = "TRUCK"):
@@ -114,6 +99,7 @@ class ImpactAnalyzer:
         if diff_production <= 0:
             return 0.0 # Feedstock B is already worse or equal at production level
             
+        # Get emission factor dynamically based on mode
         factor_b = getattr(Logistics, f"EMISSIONS_{mode_b}")
         return diff_production / factor_b
 

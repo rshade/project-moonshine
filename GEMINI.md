@@ -35,7 +35,13 @@ We rejected the "box and radiator" design in favor of a linear, jet-engine style
     * **Speed Increaser:** Turbine (Low Torque/High RPM) -> Fan (High Speed/Air Volume).
 
 ## 🧪 Research Goals & "The Big Questions"
+> **Workflow Note:** To maintain a clear engineering record, ensure that simulation results and any resulting code changes are staged (`git add`) and committed after exploring each of the following paths.
+
+### 🔄 Workflow Protocols
+* **Hardware-Driven Software:** If a Hardware Roadmap item requires software changes (e.g., new simulation capabilities), add the task to `SOFTWARE_ROADMAP.md` **before** processing it. This ensures we track the "Tools" separately from the "Product" and maintain context if interrupted.
+
 * **The Thermal Firewall:** Can a gearbox with ceramic internals and a non-conductive (G10) housing act as a "Thermal Break" to isolate the turbine heat from the cooling fan?
+    * *Result:* **SOLVED.** Simulation `test_gearbox_thermal.py` confirms that adding cooling fins to the gearbox housing and placing it in the main airflow ("Active Thermal Break") clamps the gearbox temp to ~25.75°C, reducing heat creep to the fan by **97.9%**. This is far superior to passive ceramic isolation alone.
 * **Shaft Metallurgy:** Does the 8mm Stainless shaft suffer from "Heat Swelling" (thermal expansion) that risks seizing? Should we move to Invar or a ceramic-coated composite?
 * **The Race to RPM:** Define the torque curve required for the Hybrid Starter Motor to hit operating RPM within the 15-second buffer.
 * **The Thermal Capacitor:** Integrate a **0.15L PCM Cartridge** (Barium Hydroxide Octahydrate, melting at 78°C) into the boiler.
