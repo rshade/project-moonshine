@@ -21,9 +21,9 @@ We rejected the "box and radiator" design in favor of a linear, jet-engine style
 * **Fluid:** 60% Ethanol / 40% Water.
 * **Why?** Pure water boils too hot (100°C) for chips. Pure alcohol boils too cool (78°C) and is a fire hazard.
 * **The Sweet Spot:** The mix boils at ~80°C-82°C.
-    * **Safety:** Higher flash point than pure ethanol.
+    * **Safety:** Higher flash point than pure ethanol. **Constraint:** We strictly use a ~60/40 mix to minimize flammability and prevent explosive vapor risks; 95%+ concentrations are rejected for safety.
     * **Thermodynamics:** High latent heat capacity from the water content; low boiling point from the alcohol.
-* **"The Bourbon Glaze" Risk:** If using non-pure sources (like actual bourbon), sugar/tannins will foul the cold plates. Requires a "Wash Cycle" maintenance protocol.
+* **"The Bourbon Glaze" Risk:** This is our term for the accumulation of impurities (like copper oxides) over time. While the name is campy, **actual bourbon is strictly forbidden** as sugars/tannins would foul the cold plates. Requires a "Wash Cycle" maintenance protocol.
 
 ## ⚙️ Mechanical Constraints
 * **Turbine Type:** Tesla Turbine (Bladeless). Preferred for its ability to handle "wet vapor" (mixed phase) without damage.
@@ -35,11 +35,45 @@ We rejected the "box and radiator" design in favor of a linear, jet-engine style
 ## 🛡️ Safety & "The Happy Hour Protocol"
 * **Leak Detection:** Standard hydrocarbon sensors.
 * **Failure Mode:** If the loop ruptures, the fluid evaporates quickly. It is flammable but not toxic.
-* **"Happy Hour":** A tongue-in-cheek reference to the fact that the working fluid is technically food-grade (distilled spirits), making clean-up less hazardous than glycol or refrigerant leaks.
+* **"Happy Hour":** A tongue-in-cheek reference to the fact that the working fluid components (pure ethanol and distilled water) are food-grade, making clean-up less hazardous than glycol or refrigerant leaks. Still, don't drink the "Wash."
 
+## 🧪 Architecture Evaluation Framework (AEF)
+
+To ensure design decisions are grounded in physics, Project Moonshine employs a structured evaluation framework for all proposed hardware tracks.
+
+### The Methodology
+
+1.  **Candidate Architectures:** New designs are defined as "Options" with specific constraints (e.g., parasitic load, mechanical complexity).
+
+2.  **Physics-Based Validation:** Every option must pass a battery of automated tests within the `moonshine-sim` environment.
+
+3.  **Metric-Driven Evaluation:** Designs are scored against Net Energy Surplus, Thermal Stability, and Mechanical Reliability.
+
+### Standard Test Structs
+
+All simulations must output a standard result struct to maintain consistency across the project:
+
+*   **Result (Boolean):** Pass/Fail against a defined physical threshold.
+
+*   **Data (Object):** Raw physics values (e.g., Delta-P, Watts, kg/s).
+
+*   **Narrative (String):** Engineering justification for the result.
+
+## 📓 Discovery & Pivot Log
+
+* **Pivot 1: Sourcing vs. Distance (Dec 2025)**
+    * *Insight:* Local isn't always greener. Logistics (shipping) is so efficient that it often pays to "import" high-yield sugarcane ethanol rather than use local corn. 
+    * *Action:* Integrated `ImpactAnalyzer` into the AEF.
+* **Pivot 2: The Purity Imperative**
+    * *Insight:* Industrial denaturants (methanol/gasoline) are "poisons" to our seals and thermal stability. 
+    * *Action:* Moved to a "Food Grade / Pure Only" sourcing mandate in the roadmap.
+* **Pivot 3: The Drift Trigger**
+    * *Insight:* Preferential evaporation of ethanol means the system "stiffens" (boiling point rises) over time.
+    * *Action:* Established "The Wash" flushing protocol based on BP drift thresholds.
+    * *Research Goal:* Define triggers (e.g., hours of operation, conductivity change, or color shift) for replacing the 60/40 mix and cleaning the "Bourbon Glaze" (precipitated oxides).
+* **Pivot 4: The Race to RPM (Dec 2025)**
+    * *Insight:* At high TDP (1000W), we only have ~15 seconds from the first bubble of vapor to chip overheat. This is likely not enough time to overcome turbine stiction and spin the fan to full RPM.
+    * *Action:* Added "Hybrid Starter Motor" discovery to the roadmap.
 ## 📝 Design History Log
-* **Iteration 1:** Steam turbine. (Rejected: Temps too high).
-* **Iteration 2:** Pure Alcohol ORC. (Refined: Safety concerns).
-* **Iteration 3:** "The Still" - condenser added.
-* **Iteration 4:** "Axial Tunnel" - Shaft runs through the condenser for compact form factor.
-* **Branding:** Adopted "Moonshiner" terminology (Wash, Worm, Thumper) to make open-source hardware approachable.
+
+* **Iteration 5:** "The Evaluation Pivot" - Introduced the AEF to allow for parallel development and simulation of multiple thermodynamic cycles.

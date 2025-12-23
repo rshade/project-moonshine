@@ -17,7 +17,26 @@
 * **Status:** 🟡 In Progress (Simulation Phase)
 - [x] **Repo Setup:** Defensive Publication Live.
 - [x] **Physics Engine:** Python Simulation (`moonshine-sim`) created.
+- [x] **Sourcing Analysis:** Environmental impact & logistics model integrated.
 - [ ] **Hardware Loop:** Build the physical Proof of Concept.
+
+## 🔍 Discovery & Research (Parallel Tracks)
+* **Fluid Purity & Denaturants:** 
+    * [ ] **The "No Poison" Protocol:** Research sourcing 200-proof food-grade ethanol to eliminate methanol/gasoline denaturants (prevents seal degradation and boiling point shift).
+* **Advanced Impact Metrics:**
+    * [ ] **Water Scarcity Weighting:** Refine the "Weighted Water" model using real-world GIS data for corn/beet/cane regions.
+    * [ ] **Land Use Analysis:** Analyze Carbon Debt (iLUC) for different feedstocks to ensure true carbon neutrality.
+* **Operations & Safety:**
+    * [ ] **Supply Chain Resiliency:** Build a "Feedstock Agnostic" cost model to handle seasonal price volatility.
+    * [ ] **Regulatory (NFPA) Mapping:** Map the 22°C flash point of the 60/40 mix to standard fire code storage limits for data centers.
+* **Maintenance & Longevity:**
+    * [ ] **Flushing Protocol ("The Wash"):** Define triggers (e.g., hours of operation, conductivity change, or color shift) for replacing the 60/40 mix and cleaning the "Bourbon Glaze" (precipitated oxides).
+    * [ ] **Degradation Modeling:** Simulate fractional distillation risks—detecting if ethanol is escaping faster than water and shifting the boiling point.
+    * [ ] **Intra-Loop Fractionation:** Model the "Continuous Still" effect—does the boiler become water-heavy while ethanol hangs out in the condenser?
+* **Waste & Circularity:**
+    * [ ] **Waste Disposal Validation:** Verify municipal sanitary sewer compliance for diluted ethanol disposal (The "Happy Hour" protocol).
+    * [ ] **Glaze Recovery:** Research reclaiming copper oxides from the "Bourbon Glaze" byproduct for recycling or composting.
+    * [ ] **Alternative Re-use:** Investigate if "The Flush" can be used as a cleaning agent or secondary fuel source before final disposal.
 
 ## ⚙️ Batch 2: The "Thumper" (Turbine Integration)
 * **Status:** 🔴 Locked
