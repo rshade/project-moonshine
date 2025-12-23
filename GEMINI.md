@@ -28,9 +28,19 @@ We rejected the "box and radiator" design in favor of a linear, jet-engine style
 ## ⚙️ Mechanical Constraints
 * **Turbine Type:** Tesla Turbine (Bladeless). Preferred for its ability to handle "wet vapor" (mixed phase) without damage.
 * **Generator:** Permanent Magnet Micro-Generator.
+* **Drivetrain Materials:** 
+    * **Bearings:** **Silicon Nitride (Si3N4)** for low friction and high RPM durability.
+    * **Gears (The "Thermal Break"):** **Zirconia (ZrO2)**. Chosen for its extremely low thermal conductivity (~2.5 W/m·K), providing a ~26% reduction in heat creep from the hot turbine to the cold fan.
 * **Gearing:**
     * **Speed Increaser:** Turbine (Low Torque/High RPM) -> Fan (High Speed/Air Volume).
-    * **Variable Gearing:** Users change gears based on climate (e.g., larger fan gear for Texas heat, smaller for Alaska).
+
+## 🧪 Research Goals & "The Big Questions"
+* **The Thermal Firewall:** Can a gearbox with ceramic internals and a non-conductive (G10) housing act as a "Thermal Break" to isolate the turbine heat from the cooling fan?
+* **Shaft Metallurgy:** Does the 8mm Stainless shaft suffer from "Heat Swelling" (thermal expansion) that risks seizing? Should we move to Invar or a ceramic-coated composite?
+* **The Race to RPM:** Define the torque curve required for the Hybrid Starter Motor to hit operating RPM within the 15-second buffer.
+* **The Thermal Capacitor:** Integrate a **0.15L PCM Cartridge** (Barium Hydroxide Octahydrate, melting at 78°C) into the boiler.
+    * *Goal:* Acts as a "Thermal Flywheel," absorbing spikes during operation and releasing enough latent heat to run the turbine for 5 minutes after chip shutdown (preventing heat soak).
+* **The Wash Cycle:** Define triggers (e.g., hours of operation, conductivity change, or color shift) for replacing the 60/40 mix and cleaning the "Bourbon Glaze."
 
 ## 🛡️ Safety & "The Happy Hour Protocol"
 * **Leak Detection:** Standard hydrocarbon sensors.

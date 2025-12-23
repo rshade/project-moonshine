@@ -26,7 +26,9 @@
 * **Advanced Impact Metrics:**
     * [ ] **Water Scarcity Weighting:** Refine the "Weighted Water" model using real-world GIS data for corn/beet/cane regions.
     * [ ] **Land Use Analysis:** Analyze Carbon Debt (iLUC) for different feedstocks to ensure true carbon neutrality.
-* **Operations & Safety:**
+* **Thermal Storage & Hybrid Cycles:**
+    * [ ] **Molten Salt Battery Integration:** Research capturing high-grade waste heat (steam/vapor) and residual heat into a molten salt thermal battery for energy storage and demand-response shifting.
+* **Operations & Safety:****
     * [ ] **Supply Chain Resiliency:** Build a "Feedstock Agnostic" cost model to handle seasonal price volatility.
     * [ ] **Regulatory (NFPA) Mapping:** Map the 22°C flash point of the 60/40 mix to standard fire code storage limits for data centers.
 * **Maintenance & Longevity:**
@@ -42,6 +44,7 @@
 * **Status:** 🔴 Locked
 - [ ] **Turbine Prototype:** 3D printed Tesla turbine testing.
 - [ ] **Fluid Coupling:** Efficiency analysis of ethanol vapor vs turbine blades.
+- [ ] **Hybrid Starter Motor:** Implement a small electric starter to overcome turbine stiction and achieve immediate RPM during the "Cold Start" phase (Addresses Pivot 4).
 
 ## 📦 Batch 3: The "Tunnel" (Axial Integration)
 * **Status:** 🔴 Locked

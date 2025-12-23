@@ -36,3 +36,13 @@ A local feedstock (e.g., Corn) is not always the most environmental choice. We t
 * **Logistics Intensity:** The CO2 cost to transport (Truck vs. Rail vs. Ship).
 
 **The Rule of Thumb:** Highly efficient production (Sugarcane/Sugar Beet) can travel thousands of miles by sea or rail and still maintain a lower total carbon footprint than local corn moved by truck.
+
+## 5. Lubrication Strategy ("The Dry Run")
+To maintain our "No Poison" mandate and minimize parasitic drag on the ceramic drivetrain:
+* **Prohibited:** Standard Petroleum Gear Oils (e.g., SAE 90W). They are toxic, messy, and their high viscosity kills the efficiency of our micro-turbine.
+* **Preferred:** **Dry Solid Lubrication**.
+    * **PTFE (Teflon) Infusion:** Applied to the Zirconia gears to provide a friction coefficient < 0.1 without liquid drag.
+    * **Molybdenum Disulfide (MoS2):** Acceptable for high-load contact points.
+* **Fallback (If Liquid Required):**
+    * **Food Grade (H1) Mineral Oil:** Must be NSF H1 registered for incidental food contact.
+    * **Biodegradable Synthetic:** Ester-based oils that break down safely in the environment.

@@ -37,6 +37,10 @@ This document tracks identified mechanical and thermodynamic flaws in the Projec
 ## 2. Thermal Expansion & Tesla Turbine Clearances
 * **The Flaw:** The "Axial Condensing Tunnel" uses a single central shaft connecting a hot turbine (~82°C) to a cool fan.
 * **The Consequence:** Tesla turbines require extremely tight disc spacing (0.1mm - 0.5mm). Differential thermal expansion between the hot turbine end and cold fan end will cause the shaft to grow unevenly, leading to disc-rub or housing interference.
+* **Proposed Mitigations:**
+    1. **Ceramic Bearings:** Use Si3N4 (Silicon Nitride) bearings to handle high RPMs with minimal friction and zero thermal expansion issues.
+    2. **Thermal Break Shaft:** Replace the solid metal shaft with a high-strength, low-thermal-conductivity composite or use a decoupled "Split-Shaft" design.
+    3. **Ceramic Gearing:** Use ceramic gears in the speed increaser/transmission to prevent heat-related gear lash changes.
 
 ## 3. The Sealing Nightmare (Dynamic Leakage)
 * **The Flaw:** High-speed rotating shaft carrying volatile, flammable fluid.
@@ -49,3 +53,7 @@ This document tracks identified mechanical and thermodynamic flaws in the Projec
 ## 5. Parasitic Heat Soak (The Shaft Bridge)
 * **The Flaw:** The central drive shaft acts as a massive thermal bridge.
 * **The Consequence:** Heat conducts directly from the 80°C turbine into the generator and fan bearings. Most COTS bearings and magnets are not rated for these temperatures, leading to premature failure.
+* **Proposed Mitigations:**
+    1. **Ceramic Transmission:** Introduce a gearbox/transmission that acts as a thermal isolator.
+    2. **Zirconia (ZrO2) Isolators:** Use zirconia spacers between the turbine assembly and the rest of the stack to block conductive paths.
+
